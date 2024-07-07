@@ -1,0 +1,27 @@
+<div class="container mt-4" style="background-color: white;">
+  <h1 class="mb-4">Búsqueda de Videojuegos</h1>
+  <form class="mb-4">
+    <div class="row">
+      <div class="col-md-8">
+        <input type="text" class="form-control" [(ngModel)]="terminoBusqueda" name="terminoBusqueda" placeholder="Buscar videojuego o categoría..." (input)="buscar(terminoBusqueda)">
+      </div>
+    </div>
+  </form>
+  
+  <div id="search-results" *ngIf="isResultLoaded">
+    <div class="result-item" *ngFor="let producto of listaProductos">
+      <div class="row">
+        <div class="col-md-3">
+          <img [src]="producto.rutaImagen" alt="{{ producto.nombre }}" class="img-fluid">
+        </div>
+        <div class="col-md-9">
+          <h4>{{ producto.nombre }}</h4>
+          <p>{{ producto.descripcion }}</p>
+          <p><strong>Precio:</strong> {{ producto.precio | currency }}</p>
+          <p><strong>Categoría:</strong> {{ producto.categoriaNombre }}</p>
+          <a href="#" class="btn btn-outline-primary">Ver detalles</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
